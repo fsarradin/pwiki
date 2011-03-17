@@ -352,11 +352,11 @@ if __name__ == '__main__':
     import optparse
     
     DEFAULT_PORT = 8008
-    DEFAULT_DB = 'wiki.db'
+    DEFAULT_DB = 'data/wiki.db'
     if TEST:
         DEFAULT_DB = ':memory:'
-    DEFAULT_CSS = 'wiki.css'
-    DEFAULT_TEMPLATE = 'wiki.tmpl'
+    DEFAULT_CSS = 'css/wiki.css'
+    DEFAULT_TEMPLATE = 'template/wiki.tmpl'
     
     parser = optparse.OptionParser()
     parser.add_option('-p', '--port', dest='port', default=DEFAULT_PORT)
