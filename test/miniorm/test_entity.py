@@ -100,6 +100,7 @@ class TestEntityManager_Extended(unittest.TestCase):
 	
 	def test_findAllEntity(self):
 		self.manager.findAll()
+		
 		cursors = self.connection.get_created_cursors()
 		query, args = cursors[0].get_executed()[0]
 		self.assertTrue(query == 'SELECT ROW_ID, VALUE FROM DUMMY_TABLE'
