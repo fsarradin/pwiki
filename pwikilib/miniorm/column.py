@@ -16,11 +16,14 @@ class String(ColumnType):
 		return "VARCHAR"
 
 class Column(object):
-	def __init__(self, target, type=None, nullable=True):
-		self.__target = target
+	def __init__(self, name=None, type=None, nullable=True):
+		self.__name = name
 		self.__type = type
 		self.__nullable = nullable
 		self.__value = None
+	
+	def get_name(self):
+		return self.__name
 	
 	def is_nullable(self):
 		return self.__nullable
