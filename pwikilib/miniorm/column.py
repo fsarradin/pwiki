@@ -4,10 +4,16 @@
 class ColumnType(object):
 	def accept(self, value):
 		pass
+	
+	def get_datatype():
+		pass
 
 class String(ColumnType):
 	def accept(self, value):
 		return isinstance(value, basestring)
+
+	def get_datatype():
+		return "VARCHAR"
 
 class Column(object):
 	def __init__(self, target, type=None, nullable=True):
