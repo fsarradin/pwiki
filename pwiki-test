@@ -1,0 +1,6 @@
+#!/bin/sh
+
+script_path=$(dirname $0)
+src_path=${script_path}/src
+PYTHONPATH=$PYTHONPATH:$src_path
+python ${src_path}/pwiki.py --port=8010 --db=${script_path}/data/wiki-test.db --css=${script_path}/css/wiki.css
