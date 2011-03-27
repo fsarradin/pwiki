@@ -75,5 +75,16 @@ class EntityManager(object):
 			rows = cursor.execute('SELECT ' + (', '.join(meta['columns'])) + ' FROM ' + meta['table'])
 		finally:
 			cursor.close()
+	
+	def persist(self, entity):
+		cursor = self.__session.cursor()
+		try:
+			meta = self.__entity__.__metadata__
+			vars = [':' + name for name in meta['columns']]
+			cursor.execute('INSERT INTO ' + meta['table']
+				+ ' (' + (', '.join(meta['columns']))
+				+ ') VALUES (' + (', '.join(vars)) + ')')
+		finally:
+			cursor.close()
 
 # End

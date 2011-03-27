@@ -1,7 +1,7 @@
 #
 #
 
-from pwikilib.miniorm import column
+from miniorm import column
 import unittest
 
 class TestString(unittest.TestCase):

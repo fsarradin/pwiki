@@ -1,7 +1,7 @@
 #
 #
 
-from pwikilib.miniorm import entity, column
+from miniorm import entity, column
 import unittest
 
 class TestEntity(unittest.TestCase):
@@ -105,6 +105,16 @@ class TestEntityManager_Extended(unittest.TestCase):
 		query, args = cursors[0].get_executed()[0]
 		self.assertTrue(query == 'SELECT ROW_ID, VALUE FROM DUMMY_TABLE'
 			or query == 'SELECT VALUE, ROW_ID FROM DUMMY_TABLE')
+	
+	def test_shouldPersistOneEntity(self):
+		entity = DummyEntity()
+		self.manager.save(entity)
+		
+		cursors = self.connection.get_created_cursors()
+		query, args = cursors[0].get_executed()[0]
+		self.assertTrue(query == 'INSERT INTO DUMMY_TABLE (ROW_ID, VALUE) VALUES (:ROW_ID, :VALUE)'
+			or query == 'INSERT INTO DUMMY_TABLE (VALUE, ROW_ID) VALUES (:VALUE, :ROW_ID)')
+		
 
 if __name__ == '__main__':
 	unittest.main()
